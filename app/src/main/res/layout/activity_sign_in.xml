@@ -32,20 +32,13 @@
         android:layout_marginTop="@dimen/authentication_screen_content_marginTop"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/sign_in_description_text"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/authentication_description_text_size" />
-
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/authentication_screen_marginStartEnd"
             android:layout_marginTop="@dimen/authentication_screen_marginTop"
             android:layout_marginEnd="@dimen/authentication_screen_marginStartEnd"
+            android:layout_marginVertical="@dimen/authentication_screen_til_marginVertical"
             android:elevation="@dimen/card_view_elevation"
             app:cardCornerRadius="@dimen/card_view_corner_radius">
 
@@ -94,7 +87,7 @@
                     android:layout_marginStart="@dimen/btn_marginStartEnd"
                     android:layout_marginTop="@dimen/sign_up_screen_btn_marginTop"
                     android:layout_marginEnd="@dimen/btn_marginStartEnd"
-                    android:background="@drawable/shape_button_rounded"
+                    android:background="@drawable/nav_header_main_background"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"
                     android:paddingTop="@dimen/btn_paddingTopBottom"

@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import com.example.trello.R
+import com.example.trello.activities.firebase.FirestoreClass
 import com.example.trello.activities.models.User
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_sign_in.*
@@ -23,10 +24,6 @@ class SignInActivity : BaseActivity() {
         setContentView(R.layout.activity_sign_in)
         auth = FirebaseAuth.getInstance()
 
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
 
         btn_sign_in.setOnClickListener {
             signInRegisteredUser()

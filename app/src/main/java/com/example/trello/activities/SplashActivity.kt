@@ -15,12 +15,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN)
-
-        val typeFace: Typeface = Typeface.createFromAsset(assets, "carbon.black.ttf")
-        tv_app_name.typeface = typeFace
-
         Handler().postDelayed({
 
             var currentUserID = FirestoreClass().getCurrentUserId()
