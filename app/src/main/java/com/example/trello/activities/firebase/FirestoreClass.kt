@@ -3,10 +3,7 @@ package com.example.trello.activities.firebase
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
-import com.example.trello.activities.MainActivity
-import com.example.trello.activities.MyProfileActivity2
-import com.example.trello.activities.SignInActivity
-import com.example.trello.activities.SignUpActivity
+import com.example.trello.activities.*
 import com.example.trello.activities.models.User
 import com.example.trello.activities.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -53,7 +50,7 @@ class FirestoreClass {
             .addOnSuccessListener {document ->
                 val loggedInUser = document.toObject(User::class.java)!!
                 when(activity) {
-                    is SignInActivity -> {
+                    is IntroActivity -> {
                         activity.signInSuccess(loggedInUser)
                     }
                     is MainActivity -> {
@@ -66,7 +63,7 @@ class FirestoreClass {
             }.addOnFailureListener{
                 e->
                 when(activity) {
-                    is SignInActivity -> {
+                    is IntroActivity -> {
                         activity.hideProgressDialog()
                     }
                     is MainActivity -> {
