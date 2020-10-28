@@ -1,8 +1,10 @@
 package com.example.trello.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.Window
 import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
 import com.example.trello.R
@@ -23,6 +25,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         nav_view.setNavigationItemSelectedListener(this)
 
         FirestoreClass().loadUserData(this)
+
+        fab_create_board.setOnClickListener{
+            startActivity(Intent(this, CreateBoardActivity::class.java))
+        }
+
     }
 
     private fun setupActionBar() {
@@ -66,7 +73,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.nav_my_profile ->{
-               startActivity(Intent(this, MyProfileActivity2::class.java))
+               startActivity(Intent(this, MyProfileActivity::class.java))
             }
             R.id.nav_sign_out -> {
                 FirebaseAuth.getInstance().signOut()

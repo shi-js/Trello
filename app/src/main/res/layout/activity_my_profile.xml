@@ -5,14 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.MyProfileActivity2">
+    tools:context=".activities.MyProfileActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_my_profile_activity"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!--This layout is just used for applying a background image to the screen below the toolbar.-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,8 +28,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/my_profile_screen_content_marginStartEnd"
             android:layout_marginTop="@dimen/my_profile_screen_content_marginTopBottom"
             android:layout_marginEnd="@dimen/my_profile_screen_content_marginStartEnd"
@@ -62,7 +69,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/my_profile_et_email_marginTop">
 
-                    <!--TODO (Step 4: Here we make the email EditText as focusable false. As it should not be editable.)-->
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/et_email"
                         android:layout_width="match_parent"
@@ -96,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/my_profile_btn_update_marginTop"
-                    android:background="@drawable/shape_button_rounded"
+                    android:background="@drawable/nav_header_main_background"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"
                     android:paddingTop="@dimen/btn_paddingTopBottom"

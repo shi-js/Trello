@@ -23,7 +23,7 @@ class FirestoreClass {
         }
     }
 
-    fun updateUserProfileData(activity: MyProfileActivity2, userHashMap: HashMap<String, Any>){
+    fun updateUserProfileData(activity: MyProfileActivity, userHashMap: HashMap<String, Any>){
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserId())
             .update(userHashMap)
@@ -56,7 +56,7 @@ class FirestoreClass {
                     is MainActivity -> {
                         activity.updateNavigationUserDetails(loggedInUser)
                     }
-                    is MyProfileActivity2 -> {
+                    is MyProfileActivity -> {
                         activity.setUserDataInUI(loggedInUser)
                     }
                 }
