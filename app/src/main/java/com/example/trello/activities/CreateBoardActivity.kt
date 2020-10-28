@@ -7,12 +7,17 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.example.trello.R
+import com.example.trello.activities.firebase.FirestoreClass
+import com.example.trello.activities.models.Board
 import com.example.trello.activities.utils.Constants
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_create_board.*
 import java.io.IOException
 
@@ -21,11 +26,19 @@ class CreateBoardActivity : BaseActivity() {
 
     private var mSelectedImageFileUri: Uri? = null
 
+    private lateinit var mUserName: String
+
+    private var mBoardImageURL: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_board)
 
         setupActionBar()
+
+        if(intent.hasExtra(Constants.NAME)){
+            mUserName = intent.getStringExtra(Constants.NAME).toString()
+        }
 
         iv_board_image.setOnClickListener { view ->
 
@@ -41,8 +54,16 @@ class CreateBoardActivity : BaseActivity() {
                         Constants.READ_STORAGE_PERMISSION_CODE
                 )
             }
+
+            btn_create.setOnClickListener{
+                if(mSelectedImageFileUri != null){
+                    uploadBoardImage()
+                }else{
+                    showProgressDialog(resources.getString(R.string.please_wait))
+                    createBoard()
+                }
+            }
         }
-        // END
     }
 
     override fun onRequestPermissionsResult(
@@ -75,7 +96,7 @@ class CreateBoardActivity : BaseActivity() {
             mSelectedImageFileUri = data.data
 
             try {
-                // Load the board image in the ImageView.
+
                 Glide
                         .with(this@CreateBoardActivity)
                         .load(Uri.parse(mSelectedImageFileUri.toString())) // URI of the image
@@ -87,11 +108,66 @@ class CreateBoardActivity : BaseActivity() {
             }
         }
     }
-    // END
 
-    /**
-     * A function to setup action bar
-     */
+    private fun createBoard(){
+        val assignedUserArrayList: ArrayList<String> = ArrayList()
+        assignedUserArrayList.add(getCurrentUserId())
+        var board = Board(
+            et_board_name.text.toString(),
+            mBoardImageURL,
+            mUserName,
+            assignedUserArrayList
+        )
+
+        FirestoreClass().createBoard(this, board)
+
+    }
+
+    private fun uploadBoardImage(){
+        showProgressDialog(resources.getString(R.string.please_wait))
+
+        val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
+            "BOARD_IMAGE" + System.currentTimeMillis() + "."
+                    + Constants.getFileExtension(this, mSelectedImageFileUri)
+        )
+
+        //adding the file to reference
+        sRef.putFile(mSelectedImageFileUri!!)
+            .addOnSuccessListener { taskSnapshot ->
+                // The image upload is success
+                Log.e(
+                    "Firebase Image URL",
+                    taskSnapshot.metadata!!.reference!!.downloadUrl.toString()
+                )
+
+                // Get the downloadable url from the task snapshot
+                taskSnapshot.metadata!!.reference!!.downloadUrl
+                    .addOnSuccessListener { uri ->
+                        Log.i("Downloadable Image URL", uri.toString())
+
+                        // assign the image url to the variable.
+                        mBoardImageURL = uri.toString()
+
+                        // Call a function to update user details in the database.
+                        createBoard()
+                    }
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(
+                    this,
+                    exception.message,
+                    Toast.LENGTH_LONG
+                ).show()
+
+                hideProgressDialog()
+            }
+    }
+
+    fun boardCreatedSuccessfully(){
+        hideProgressDialog()
+        finish()
+    }
+
     private fun setupActionBar() {
 
         setSupportActionBar(toolbar_create_board_activity)

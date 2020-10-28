@@ -3,12 +3,14 @@ package com.example.trello.activities
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.SyncStateContract
 import android.view.MenuItem
 import android.view.Window
 import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
 import com.example.trello.R
 import com.example.trello.activities.firebase.FirestoreClass
+import com.example.trello.activities.utils.Constants
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +18,13 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    companion object{
+        const val MY_PROFILE_REQUEST_CODE : Int = 11
+    }
+
+    private lateinit var mUserName: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,7 +36,9 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         FirestoreClass().loadUserData(this)
 
         fab_create_board.setOnClickListener{
-            startActivity(Intent(this, CreateBoardActivity::class.java))
+            val intent = Intent(this, CreateBoardActivity::class.java)
+            intent.putExtra(Constants.NAME, mUserName)
+            startActivity(intent)
         }
 
     }
@@ -60,6 +71,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     fun updateNavigationUserDetails(user: com.example.trello.activities.models.User){
+
+        mUserName = user.name
     Glide
         .with(this)
         .load(user.image)
