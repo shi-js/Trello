@@ -11,6 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activities.MainActivity">
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_boards_list"
             android:layout_width="match_parent"
