@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.trello.R
 import com.example.trello.activities.models.Board
+import kotlinx.android.synthetic.main.activity_create_board.view.*
 import kotlinx.android.synthetic.main.item_board.view.*
 
 open class BoardItemAdapter(private val context: Context,
@@ -37,8 +38,8 @@ open class BoardItemAdapter(private val context: Context,
                 .placeholder(R.drawable.ic_board_place_holder)
                 .into(holder.itemView.iv_board_image)
 
-            holder.itemView.tv_name.text = model.name
-            holder.itemView.tv_created_by.text = "Created By: ${model.createdBy}"
+            holder.itemView.txt_name_rv.text = model.name
+            holder.itemView.txt_created_by_rv.text = "Created By: ${model.createdBy}"
 
             holder.itemView.setOnClickListener {
                 if (onClickListener != null){
