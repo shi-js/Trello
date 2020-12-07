@@ -20,6 +20,11 @@ class IntroActivity : BaseActivity() {
         setContentView(R.layout.activity_intro)
         auth = FirebaseAuth.getInstance()
 
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+
         btn_sign_in.setOnClickListener {
             signInRegisteredUser()
         }
