@@ -32,6 +32,7 @@ class MyProfileActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my__profile_activity)
+        profile_cardview.setBackgroundResource(R.drawable.blackk)
         setupActionBar()
 
         FirestoreClass().loadUserData(this)

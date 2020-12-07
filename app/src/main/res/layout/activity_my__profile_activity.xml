@@ -27,8 +27,10 @@
         android:background="@color/colorBlack">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/profile_cardview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginStart="@dimen/my_profile_screen_content_marginStartEnd"
             android:layout_marginTop="@dimen/my_profile_screen_content_marginTopBottom"
             android:layout_marginEnd="@dimen/my_profile_screen_content_marginStartEnd"
