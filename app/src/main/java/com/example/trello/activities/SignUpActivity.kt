@@ -18,6 +18,11 @@ class SignUpActivity : BaseActivity() {
         setContentView(R.layout.activity_sign_up)
         signup_card.setBackgroundResource(R.drawable.blackk)
 
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+
         setUpActionBar()
 
         btn_sign_up.setOnClickListener {
