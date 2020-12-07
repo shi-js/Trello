@@ -18,11 +18,11 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_board_image_rv"
             android:layout_width="@dimen/item_board_image_size"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="2dp"
             android:layout_height="@dimen/item_board_image_size"
             android:contentDescription="@string/image_contentDescription"
-            android:src="@drawable/ic_board_place_holder"
-            app:civ_border_color="@color/primary_text_color"
-            app:civ_border_width="@dimen/item_board_image_circular_border_width"/>
+            android:src="@drawable/t2"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,9 +34,8 @@
                 android:id="@+id/txt_name_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/primary_text_color"
-                android:textSize="@dimen/item_board_name_text_size"
-                tools:text="Tournament 1"/>
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/item_board_name_text_size" />
 
             <TextView
                 android:id="@+id/txt_created_by_rv"

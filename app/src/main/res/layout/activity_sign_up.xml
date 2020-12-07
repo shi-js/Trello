@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background"
+    android:background="@android:color/black"
     android:orientation="vertical"
     tools:context=".activities.SignUpActivity">
 
@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:text="@string/sign_up"
+            android:background="@android:color/black"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/toolbar_title_text_size"
             android:textStyle="bold" />
@@ -29,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:background="@android:color/black"
         android:layout_marginTop="@dimen/authentication_screen_content_marginTop"
         android:orientation="vertical">
 
@@ -43,8 +45,10 @@
             android:textSize="@dimen/authentication_description_text_size" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/signup_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginStart="@dimen/authentication_screen_marginStartEnd"
             android:layout_marginTop="@dimen/authentication_screen_card_view_marginTop"
             android:layout_marginEnd="@dimen/authentication_screen_marginStartEnd"

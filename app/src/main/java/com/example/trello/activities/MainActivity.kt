@@ -1,5 +1,6 @@
 package com.example.trello.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
@@ -24,12 +25,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     private lateinit var mUserName: String
 
+    @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val post : ArrayList<String> = ArrayList()
-        for(i in 1..100){
+        for(i in 1..20){
             post.add ("Tournament # $i")
         }
 
