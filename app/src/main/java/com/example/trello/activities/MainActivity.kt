@@ -1,11 +1,8 @@
 package com.example.trello.activities
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.provider.SyncStateContract
 import android.view.MenuItem
-import android.view.Window
 import androidx.core.view.GravityCompat
 import com.bumptech.glide.Glide
 import com.example.trello.R
@@ -19,7 +16,7 @@ import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    companion object{
+        companion object{
         const val MY_PROFILE_REQUEST_CODE : Int = 11
     }
 

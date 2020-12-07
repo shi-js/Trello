@@ -3,6 +3,7 @@ package com.example.trello.activities.firebase
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
+import com.example.trello.activities.MyProfileActivity
 import com.example.trello.activities.*
 import com.example.trello.activities.models.Board
 import com.example.trello.activities.models.User

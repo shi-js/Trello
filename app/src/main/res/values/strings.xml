@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BRING ME THAT!</string>
+    <string name="app_name">ESPORTS ARENA</string>
 
     <string name="image_contentDescription">image</string>
     <string name="let_s_get_started_text">Let\'s Get started</string>
@@ -18,6 +18,8 @@
 
     <string name="nav_my_profile">My Profile</string>
     <string name="nav_sign_out">Sign Out</string>
+    <string name="search_icon">Search</string>
+    <string name="settings_icon">Settings</string>
 
     <string name="mobile">Mobile</string>
     <string name="update">UPDATE</string>

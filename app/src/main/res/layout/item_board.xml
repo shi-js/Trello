@@ -16,7 +16,7 @@
         android:padding="@dimen/item_board_content_padding">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_board_image"
+            android:id="@+id/img_board_image_rv"
             android:layout_width="@dimen/item_board_image_size"
             android:layout_height="@dimen/item_board_image_size"
             android:contentDescription="@string/image_contentDescription"
@@ -31,25 +31,30 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/txt_name_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/primary_text_color"
                 android:textSize="@dimen/item_board_name_text_size"
-                tools:text="Board Name" />
+                tools:text="Board Name"/>
 
             <TextView
-                android:id="@+id/tv_created_by"
+                android:id="@+id/txt_created_by_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/secondary_text_color"
                 android:textSize="@dimen/item_board_created_by_text_size"
-                tools:text="Created By" />
-
-
+                tools:text="Created By"/>
         </LinearLayout>
 
+
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_board_divider_height"
+        android:background="@color/divider_color"
+        android:layout_marginTop="@dimen/item_board_divider_marginTop"/>
 
 
 
