@@ -30,4 +30,9 @@
     <string name="board_name">Board Name</string>
 
     <string name="no_boards_are_available">Tournament 1</string>
+
+    <!--- registration page-->
+    <string name="register">REGISTRATION</string>
+    <string name="reg_name">Name</string>
+    <string name="btn_reg">REGISTER</string>
 </resources>
